@@ -61,7 +61,6 @@ def _setup_logging(level: str) -> io.StringIO:
 def _parse_args(argv: list[str] | None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Collect one UK inflation predictor source.")
     parser.add_argument("--log-level", default=LOG_LEVEL)
-    return parser.parse_args(argv)
     parser.add_argument(
         "--start-date",
         type=date.fromisoformat,
@@ -71,6 +70,7 @@ def _parse_args(argv: list[str] | None) -> argparse.Namespace:
             "rewinds from the latest stored reference_date."
         ),
     )
+    return parser.parse_args(argv)
 
 
 def _rewind(anchor: date, months: int) -> date:
